@@ -1,0 +1,8 @@
+Flask
+azure-storage-queue
+python-dotenv
+azure-identity
+fastapi
+uvicorn[standard]
+pydantic
+azure-identity

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buy Ticket</title>
+    <style>
+        .flight-card {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Available Flights</h1>
+
+    <!-- Iterate over each flight in the flight_list and display as a card -->
+    <form method="post" action="{{ url_for('select_flight') }}">
+        <!-- Iterate over each flight in the flight_list and display as a selectable card -->
+        {% for flight in flight_list %}
+        <div class="flight-card">
+            <input type="radio" id="flight{{ flight[0] }}" name="selected_flight" value="{{ flight[0] }}">
+            <label for="flight{{ flight[0] }}">
+                <h2>Flight Code: {{ flight[4] }}</h2>
+                <p>Departure Airport: {{ flight[1] }}</p>
+                <p>Arrival Airport: {{ flight[2] }}</p>
+                <p>Departure Date: {{ flight[3] }}</p>
+                <p>Passengers: {{ flight[5] }}</p>
+                <p>Miles: {{ flight[6] }}</p>
+                <p>Flexible Dates: {{ flight[7] }}</p>
+                <p>Direct Flight: {{ flight[8] }}</p>
+            </label>
+        </div>
+        {% endfor %}
+        
+        <button type="submit">Select Flight</button>
+    </form>
+
+    <div class="pagination">
+        {% if page > 1 %}
+            <a href="{{ url_for('select_flight', page=page-1) }}">Previous</a>
+        {% else %}
+            <a class="disabled">Previous</a>
+        {% endif %}
+        
+        <span>Page {{ page }} of {{ total_pages }}</span>
+        
+        {% if page < total_pages %}
+            <a href="{{ url_for('select_flight', page=page+1) }}">Next</a>
+        {% else %}
+            <a class="disabled">Next</a>
+        {% endif %}
+    </div>
+</body>
+</html>

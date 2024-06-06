@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uçuş Bilgileri Formu</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .form-container {
+            max-width: 500px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-container h2 {
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        .form-group button {
+            padding: 10px 15px;
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .form-group button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+
+<div class="form-container">
+    <h2>Uçuş Bilgileri Formu</h2>
+    {% if message %}
+            <p>{{ message }}</p>
+        {% endif %}
+    <form method="POST" action="{{ url_for('add_flight') }}">
+        <div class="form-group">
+            <label for="departure_airport">Kalkış Havalimanı:</label>
+            <select id="departure_airport" name="departure_airport" required>
+                <option value="izmir">İzmir</option>
+                <option value="istanbul">İstanbul</option>
+                <option value="ankara">Ankara</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="arrival_airport">Varış Havalimanı:</label>
+            <select id="arrival_airport" name="arrival_airport" required>
+                <option value="izmir">İzmir</option>
+                <option value="istanbul">İstanbul</option>
+                <option value="ankara">Ankara</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="ucus_tarihi">Uçuş Tarihi:</label>
+            <input type="date" id="ucus_tarihi" name="ucus_tarihi" required>
+        </div>
+        <div class="form-group">
+            <label for="ucus_kodu">Uçuş Kodu:</label>
+            <input type="text" id="ucus_kodu" name="ucus_kodu" required>
+        </div>
+        <div class="form-group">
+            <label for="kapasite">Kapasite:</label>
+            <input type="number" id="kapasite" name="kapasite" required>
+        </div>
+        <div class="form-group">
+            <label for="mil">Mil:</label>
+            <input type="number" id="mil" name="mil" required>
+        </div>
+        <div class="form-group">
+            <input type="checkbox" id="flexible_dates" name="flexible_dates">
+            <label for="flexible_dates">Esnek Tarihler</label>
+        </div>
+        <div class="form-group">
+            <input type="checkbox" id="direct_flight" name="direct_flight">
+            <label for="direct_flight">Direkt Uçuş</label>
+        </div>
+        <div class="form-group">
+            <button type="submit">Gönder</button>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>

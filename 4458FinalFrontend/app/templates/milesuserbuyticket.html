@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uçuş Bilgileri Formu</title>
+    <style>
+        .flight-card {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="flight-card">
+        <label>
+            <h2>Flight Code: {{ selected_flight[4] }}</h2>
+            <p>Departure Airport: {{ selected_flight[1] }}</p>
+            <p>Arrival Airport: {{ selected_flight[2] }}</p>
+            <p>Departure Date: {{ selected_flight[3] }}</p>
+            <p>Passengers: {{ selected_flight[5] }}</p>
+            <p>Miles: {{ selected_flight[6] }}</p>
+            <p>Flexible Dates: {{ selected_flight[7] }}</p>
+            <p>Direct Flight: {{ selected_flight[8] }}</p>
+        </label>
+    </div>
+
+    <h1>Buy Ticket</h1>
+    <form method="post" action="{{ url_for('miles_buy_ticket') }}">
+        <label for="name">Name: {{user_data[1]}}</label>
+        <br>
+        <label for="surname">Surname: {{user_data[2]}}</label>
+        <br>
+        <label for="mile">MilePoints: {{user_data[5]}} </label>
+        <br>
+        <label for="passengers">Yolcu Sayısı:</label>
+        <input type="number" id="passengers" name="passengers" required>
+
+        <button type="submit">Buy Ticket</button>
+    </form>
+</body>
+</html>

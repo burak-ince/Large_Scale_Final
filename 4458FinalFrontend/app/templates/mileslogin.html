@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Miles Login</title>
+</head>
+<body>
+    <h1>Login to Miles&Smiles Account</h1>
+    <form method="post">
+        {% if message %}
+            <p>{{ message }}</p>
+        {% endif %}
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br><br>
+        
+        <label for="surname">Surname:</label>
+        <input type="text" id="surname" name="surname" required><br><br>
+        
+        <input type="submit" value="Login">
+    </form>
+</body>
+</html>
